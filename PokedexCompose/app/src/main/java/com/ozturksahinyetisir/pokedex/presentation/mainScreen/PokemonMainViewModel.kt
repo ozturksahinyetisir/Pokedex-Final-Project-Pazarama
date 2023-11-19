@@ -3,8 +3,8 @@ package com.ozturksahinyetisir.pokedex.presentation.mainScreen
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ozturksahinyetisir.pokedex.network.PokemonRepository
 import com.ozturksahinyetisir.pokedex.data.models.PokedexModel
+import com.ozturksahinyetisir.pokedex.network.PokemonRepository
 import com.ozturksahinyetisir.pokedex.utils.Constants.PAGE_SIZE
 import com.ozturksahinyetisir.pokedex.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +24,7 @@ class PokemonMainViewModel @Inject constructor(private val
     var loadError = mutableStateOf("")
     var isLoading = mutableStateOf(false)
     var endReached = mutableStateOf(false)
+    var iconStateValue = true
 
     private var cachedPokemonList = listOf<PokedexModel>()
     private var isSearchStarting = true
@@ -46,16 +47,28 @@ class PokemonMainViewModel @Inject constructor(private val
                 isSearchStarting = true
                 return@launch
             }
-            val results = listToSearch.filter {
-                it.pokemonName.contains(query.trim(), ignoreCase = true) ||
-                        it.number.toString() == query.trim()
+            if(iconStateValue == true){
+                val results = listToSearch.filter {
+                    it.pokemonName.contains(query.trim(), ignoreCase = true)
+                }
+                if(isSearchStarting) {
+                    cachedPokemonList = pokemonList.value
+                    isSearchStarting = false
+                }
+                pokemonList.value = results
+                isSearching.value = true
+            }else{
+                val results = listToSearch.filter {
+                    it.number.toString() == query.trim()
+                }
+                if(isSearchStarting) {
+                    cachedPokemonList = pokemonList.value
+                    isSearchStarting = false
+                }
+                pokemonList.value = results
+                isSearching.value = true
             }
-            if(isSearchStarting) {
-                cachedPokemonList = pokemonList.value
-                isSearchStarting = false
-            }
-            pokemonList.value = results
-            isSearching.value = true
+
         }
     }
 
@@ -87,7 +100,6 @@ class PokemonMainViewModel @Inject constructor(private val
                     loadError.value = result.message!!
                     isLoading.value = false
                 }
-
                 else -> {}
             }
         }

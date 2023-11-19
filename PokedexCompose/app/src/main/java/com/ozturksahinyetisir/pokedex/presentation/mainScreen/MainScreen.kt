@@ -1,6 +1,5 @@
 package com.ozturksahinyetisir.pokedex.presentation.mainScreen
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -22,7 +20,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -42,6 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
@@ -59,10 +57,12 @@ import com.ozturksahinyetisir.pokedex.ui.theme.Montserrat
 
 @Composable
 fun MainScreen(navController: NavController,pViewModel: PokemonMainViewModel){
+    var iconState by remember { mutableStateOf(R.drawable.text) }
     Surface(
         color = Color.Red,
         modifier = Modifier.fillMaxSize()
     ) {
+
         Column {
             Spacer(modifier = Modifier.height(20.dp))
             Row {
@@ -80,6 +80,7 @@ fun MainScreen(navController: NavController,pViewModel: PokemonMainViewModel){
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp)
             }
+            Spacer(modifier = Modifier.height(10.dp))
             Row {
                 Box(modifier = Modifier.weight(4f)){
                     Icon(
@@ -98,27 +99,37 @@ fun MainScreen(navController: NavController,pViewModel: PokemonMainViewModel){
                         hint = "Search...",
                         modifier = Modifier
                             .padding(
-                                top = 10.dp,
-                                bottom = 10.dp,
                                 start = 10.dp
                             )
                     ) {
                         pViewModel.searchPokemonList(it)
                     }
                 }
+                Spacer(modifier = Modifier.width(40.dp))
                 Icon(
-                    imageVector = Icons.Default.MoreVert,
+                    painter = painterResource(id = iconState),
                     contentDescription = null,
-                    tint = Color.White,
+                    tint = Color.Red,
                     modifier = Modifier
-                        .size(36.dp)
                         .weight(1f)
-                        .offset(0.dp, 12.dp)
+                        .background(Color.White, shape = CircleShape)
+                        .clip(CircleShape)
+                        .padding(
+                            top = 8.dp,
+                            bottom = 8.dp
+                        )
                         .clickable {
-                            //TODO Dialog open and filter
-                            Log.e("MainScreen", "Test")
+                            //TODO
+                            if (pViewModel.iconStateValue == true) {
+                                pViewModel.iconStateValue = false
+                                iconState = R.drawable.number
+                            } else {
+                                pViewModel.iconStateValue = true
+                                iconState = R.drawable.text
+                            }
                         }
                 )
+                Spacer(modifier = Modifier.width(10.dp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             PokemonList(navController,pViewModel)
@@ -232,7 +243,9 @@ fun PokedexEntry(
                 )
             }
     ) {
-        Column {
+        Column(modifier = Modifier
+            .shadow(5.dp)
+            .background(Brush.verticalGradient(listOf(Color.White, Color.LightGray)))){
             Box(){
                 Image(
                     painter = rememberAsyncImagePainter(pModel.imageUrl),
@@ -305,6 +318,7 @@ fun PokedexRow(
             }
         }
 }
+
 @Composable
 fun RetrySection(
     error: String,
@@ -323,3 +337,5 @@ fun RetrySection(
         }
     }
 }
+
+
