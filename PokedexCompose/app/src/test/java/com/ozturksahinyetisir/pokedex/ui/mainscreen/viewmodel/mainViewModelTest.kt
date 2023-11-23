@@ -23,7 +23,7 @@ import com.ozturksahinyetisir.pokedex.network.PokemonRepository
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
-class mainViewModelTest {
+class MainViewModelTest {
 
     @get:Rule
 var instantTaskExecutorRule = InstantTaskExecutorRule()
