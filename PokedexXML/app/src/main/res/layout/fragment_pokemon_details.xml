@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.PokemonDetailsFragment"
+    android:id="@+id/background"
+    android:background="@color/orange">
+
+    <ImageView
+        android:id="@+id/backgroundPokeball"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/pokeball"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_btn"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/back_btn"
+            app:icon="@drawable/ic_back"
+            app:iconSize="30dp"
+            app:iconTint="@color/off_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/pokemon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pokemon_name"
+            android:textColor="@color/off_white"
+            android:textSize="24sp"
+            android:fontFamily="@font/montserrat_bold"
+            app:layout_constraintBottom_toBottomOf="@+id/back_btn"
+            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintTop_toTopOf="@+id/back_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/base_stat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/imgPrevious"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_previous"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="16dp"/>
+
+            <ImageView
+                android:id="@+id/imgNext"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="80dp"
+                android:layout_marginTop="16dp"/>
+            <TextView
+                android:id="@+id/aboutTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/about"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintBottom_toTopOf="@id/height_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/sHeightTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/height"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/infoTv"
+                app:layout_constraintStart_toStartOf="@id/hp_tv" />
+
+            <TextView
+                android:id="@+id/height_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="@string/height"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/sHeightTv"
+                app:layout_constraintEnd_toEndOf="@+id/sHeightTv" />
+
+            <ImageView
+                android:id="@+id/heightImage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_height"
+                app:layout_constraintBottom_toBottomOf="@id/sHeightTv"
+                app:layout_constraintEnd_toStartOf="@id/height_tv"
+                app:layout_constraintTop_toTopOf="@id/height_tv" />
+
+            <TextView
+                android:id="@+id/sWeightTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:text="@string/weight"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/sHeightTv"
+                app:layout_constraintTop_toTopOf="@id/sHeightTv" />
+
+            <ImageView
+                android:id="@+id/weightImage"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_weight"
+                app:layout_constraintBottom_toBottomOf="@id/sWeightTv"
+                app:layout_constraintEnd_toStartOf="@id/weight_tv"
+                app:layout_constraintTop_toTopOf="@id/weight_tv" />
+
+
+            <TextView
+                android:id="@+id/weight_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/sWeightTv"
+                app:layout_constraintStart_toStartOf="@+id/sWeightTv"
+                app:layout_constraintTop_toTopOf="@+id/height_tv" />
+
+            <TextView
+                android:id="@+id/infoTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info"
+                android:textSize="12sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginBottom="10dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/baseStatsTv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/baseStatsTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/base_status"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintBottom_toTopOf="@id/hp_indicator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/hp"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/attack"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/hp_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/hp"
+                app:layout_constraintStart_toStartOf="@+id/atk_tv"
+                app:layout_constraintTop_toTopOf="@+id/hp" />
+
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/hp_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:max="100"
+                app:indicatorColor="@color/red"
+                app:layout_constraintBottom_toBottomOf="@+id/hp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hp_tv"
+                app:layout_constraintTop_toTopOf="@+id/hp" />
+
+            <TextView
+                android:id="@+id/attack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/attack"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/defense"
+                app:layout_constraintStart_toStartOf="@+id/hp" />
+
+
+            <TextView
+                android:id="@+id/atk_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/attack"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/attack"
+                app:layout_constraintStart_toEndOf="@+id/attack"
+                app:layout_constraintTop_toTopOf="@+id/attack" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/atk_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                app:indicatorColor="@color/red"
+                app:layout_constraintBottom_toBottomOf="@+id/atk_tv"
+                app:layout_constraintEnd_toEndOf="@+id/hp_indicator"
+                app:layout_constraintStart_toStartOf="@+id/hp_indicator"
+                app:layout_constraintTop_toTopOf="@+id/atk_tv" />
+
+            <TextView
+                android:id="@+id/defense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/defense"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/sp_attack"
+                app:layout_constraintStart_toStartOf="@+id/attack" />
+
+            <TextView
+                android:id="@+id/def_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/defense"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/defense"
+                app:layout_constraintStart_toStartOf="@+id/atk_tv"
+                app:layout_constraintTop_toTopOf="@+id/defense" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/def_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                app:indicatorColor="@color/red"
+                app:layout_constraintBottom_toBottomOf="@+id/def_tv"
+                app:layout_constraintEnd_toEndOf="@+id/atk_indicator"
+                app:layout_constraintStart_toStartOf="@+id/atk_indicator"
+                app:layout_constraintTop_toTopOf="@+id/def_tv" />
+
+            <TextView
+                android:id="@+id/sp_attack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/sp_atk"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/sp_def"
+                app:layout_constraintStart_toStartOf="@+id/defense" />
+
+            <TextView
+                android:id="@+id/sp_attack_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sp_atk"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/sp_attack"
+                app:layout_constraintStart_toStartOf="@+id/def_tv"
+                app:layout_constraintTop_toTopOf="@+id/sp_attack" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/sp_atk_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                app:indicatorColor="@color/red"
+                app:layout_constraintBottom_toBottomOf="@+id/sp_attack_tv"
+                app:layout_constraintEnd_toEndOf="@+id/def_indicator"
+                app:layout_constraintStart_toStartOf="@+id/def_indicator"
+                app:layout_constraintTop_toTopOf="@+id/sp_attack_tv" />
+
+            <TextView
+                android:id="@+id/sp_def"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/sp_def"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/speed"
+                app:layout_constraintStart_toStartOf="@+id/sp_attack" />
+
+            <TextView
+                android:id="@+id/sp_def_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sp_def"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/sp_def"
+                app:layout_constraintStart_toStartOf="@+id/sp_attack_tv"
+                app:layout_constraintTop_toTopOf="@+id/sp_def" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/sp_def_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                app:indicatorColor="@color/red"
+                app:layout_constraintBottom_toBottomOf="@+id/sp_def_tv"
+                app:layout_constraintEnd_toEndOf="@+id/sp_atk_indicator"
+                app:layout_constraintStart_toStartOf="@+id/sp_atk_indicator"
+                app:layout_constraintTop_toTopOf="@+id/sp_def_tv" />
+
+            <TextView
+                android:id="@+id/speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:text="@string/speed"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/total"
+                app:layout_constraintStart_toStartOf="@+id/sp_def" />
+
+            <TextView
+                android:id="@+id/speed_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/speed"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/speed"
+                app:layout_constraintStart_toStartOf="@+id/sp_def_tv"
+                app:layout_constraintTop_toTopOf="@+id/speed" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/speed_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                app:indicatorColor="@color/red"
+                app:layout_constraintBottom_toBottomOf="@+id/speed_tv"
+                app:layout_constraintEnd_toEndOf="@+id/sp_def_indicator"
+                app:layout_constraintStart_toStartOf="@+id/sp_def_indicator"
+                app:layout_constraintTop_toTopOf="@+id/speed_tv" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toBottomOf="@id/total_tv"
+                app:layout_constraintStart_toStartOf="@+id/speed" />
+
+            <TextView
+                android:id="@+id/total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:text="@string/total"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/speed_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/type_rc"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginEnd="-50dp"
+        android:orientation="vertical"
+        android:padding="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toStartOf="@+id/pokemon_img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pokemon_img"
+        tools:listitem="@layout/type_item_pokemon_details" />
+    <ImageView
+        android:id="@+id/pokemon_img"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginBottom="-45dp"
+        android:contentDescription="@string/poke_image"
+        android:src="@drawable/poke"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pokemon_name"
+        tools:ignore="NotSibling" />
+
+    <TextView
+        android:id="@+id/id_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/id"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

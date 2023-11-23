@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoadingFragment">
+
+    <fragment
+        android:id="@+id/LoadingFragment"
+        android:name="com.ozturksahinyetisir.pokedex.presentation.ui.fragments.LoadingFragment"
+        android:label="fragment_start_up"
+        tools:layout="@layout/fragment_loading" >
+        <action
+            android:id="@+id/action_loadingFragment_to_allPokemonsFragment"
+            app:destination="@id/allPokemonsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allPokemonsFragment"
+        android:name="com.ozturksahinyetisir.pokedex.presentation.ui.fragments.AllPokemonsFragment"
+        android:label="fragment_all_monsters"
+        tools:layout="@layout/fragment_all_pokemons" >
+        <action
+            android:id="@+id/action_allPokemonsFragment_to_pokemonDetailsFragment"
+            app:destination="@id/pokemonDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonDetailsFragment"
+        android:name="com.ozturksahinyetisir.pokedex.presentation.ui.fragments.PokemonDetailsFragment"
+        android:label="fragment_monster_details"
+        tools:layout="@layout/fragment_pokemon_details" >
+        <action
+            android:id="@+id/action_pokemonDetailsFragment_to_allPokemonsFragment"
+            app:destination="@id/allPokemonsFragment" />
+    </fragment>
+</navigation>
