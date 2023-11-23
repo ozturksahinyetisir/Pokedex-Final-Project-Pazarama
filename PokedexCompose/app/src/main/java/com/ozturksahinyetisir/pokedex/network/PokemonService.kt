@@ -19,6 +19,5 @@ interface PokemonService {
         @Path("name") name: String
     ): Pokemon
 
-
 }
 

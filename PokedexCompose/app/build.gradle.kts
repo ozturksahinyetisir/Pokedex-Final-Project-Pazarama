@@ -63,7 +63,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.palette:palette-ktx:1.0.0")
-    testImplementation("junit:junit:4.13.2")
+    testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -80,6 +80,16 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.48")
     ksp("androidx.hilt:hilt-compiler:1.0.0")
     implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
+    
+    //Test
+    kspTest("com.google.dagger:hilt-android-compiler:2.48")
+    testImplementation("com.google.dagger:hilt-android-testing:2.48")
+    testImplementation("app.cash.turbine:turbine:1.0.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("org.mockito:mockito-core:4.4.0")
+    testImplementation("org.mockito:mockito-inline:3.12.4")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
 
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
@@ -99,9 +109,6 @@ dependencies {
     //Coil
     implementation("io.coil-kt:coil-compose:2.2.2")
 
-    //Test
-    testImplementation("app.cash.turbine:turbine:1.0.0")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-    testImplementation("com.google.truth:truth:1.1.3")
+
 
 }

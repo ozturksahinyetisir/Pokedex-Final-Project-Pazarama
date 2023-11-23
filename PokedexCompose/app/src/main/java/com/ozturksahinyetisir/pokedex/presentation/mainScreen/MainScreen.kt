@@ -119,7 +119,6 @@ fun MainScreen(navController: NavController,pViewModel: PokemonMainViewModel){
                             bottom = 8.dp
                         )
                         .clickable {
-                            //TODO
                             if (pViewModel.iconStateValue == true) {
                                 pViewModel.iconStateValue = false
                                 iconState = R.drawable.number
@@ -189,16 +188,18 @@ fun PokemonList(
     val isSearching by remember { pViewModel.isSearching }
 
     LazyColumn(contentPadding = PaddingValues(16.dp)) {
-        val itemCount = if(pokemonList.size % 2 == 0) {
-            pokemonList.size / 2
+        val itemCount = if(pokemonList.size % 3 == 0) {
+            pokemonList.size / 3
         } else {
-            pokemonList.size / 2 + 1
+            pokemonList.size / 3 + 1
         }
         items(itemCount) {
             if(it >= itemCount - 1 && !endReached && !isLoading && !isSearching) {
+
                 LaunchedEffect(key1 = true) {
                     pViewModel.loadPokemonPaginated()
                 }
+
             }
             PokedexRow(rowIndex = it, entries = pokemonList, navController = navController,pViewModel)
         }

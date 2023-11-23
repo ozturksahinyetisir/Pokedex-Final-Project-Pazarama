@@ -11,5 +11,5 @@ data class PokemonList(
     @SerializedName("previous")
     val previous: Any,
     @SerializedName("results")
-    val results: List<com.ozturksahinyetisir.pokedex.data.remote.responses.Result>
+    val results: List<Result>
 )

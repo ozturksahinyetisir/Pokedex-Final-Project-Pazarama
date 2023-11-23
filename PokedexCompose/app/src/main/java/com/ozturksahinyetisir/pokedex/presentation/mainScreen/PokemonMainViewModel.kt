@@ -104,4 +104,4 @@ class PokemonMainViewModel @Inject constructor(private val
             }
         }
     }
-    }
+}

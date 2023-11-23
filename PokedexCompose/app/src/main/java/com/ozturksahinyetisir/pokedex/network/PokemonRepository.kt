@@ -9,6 +9,7 @@ import javax.inject.Inject
 @ActivityScoped
 class PokemonRepository @Inject constructor(private val service : PokemonService){
 
+
     suspend fun getPokemonList(limit: Int, offset: Int): Resource<PokemonList> {
         return try {
             val response = service.getPokemonList(limit, offset)
@@ -26,4 +27,7 @@ class PokemonRepository @Inject constructor(private val service : PokemonService
         Resource.Error("Bir hata oluştu.")
     }
 }
+
 }
+
+

@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -40,6 +41,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -56,6 +58,7 @@ import com.ozturksahinyetisir.pokedex.utils.Resource
 import com.ozturksahinyetisir.pokedex.utils.parseStatToAbbr
 import com.ozturksahinyetisir.pokedex.utils.parseStatToColor
 import com.ozturksahinyetisir.pokedex.utils.parseTypeToColor
+import kotlinx.coroutines.withContext
 import java.lang.Math.round
 import java.util.Locale
 
@@ -66,9 +69,11 @@ fun InfoScreen(
     navController: NavController,
     viewModel: PokemonInfoViewModel,
 ) {
+
     val pokemonInfo = produceState<Resource<Pokemon>>(initialValue = Resource.Loading()) {
         value = viewModel.getPokemonInfo(pokemonName)
     }.value
+
     Box(modifier = Modifier
         .fillMaxSize()
         .background(dominantColor)
@@ -200,6 +205,7 @@ fun PokemonDetailSection(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
                 )
+
                 PokemonTypeSection(types = pokemonInfo.types)
                 PokemonDetailDataSection(
                     pokemonWeight = pokemonInfo.weight,
@@ -239,7 +245,8 @@ fun PokemonDetailBackground(pokemonInfo: Pokemon, navController: NavController){
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp,
                     maxLines = 1,
-                    modifier = Modifier.offset(35.dp,18.dp)
+                    modifier = Modifier
+                        .offset(35.dp, 18.dp)
                         .weight(3f)
                 )
                 Text(
@@ -249,7 +256,8 @@ fun PokemonDetailBackground(pokemonInfo: Pokemon, navController: NavController){
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
                     maxLines = 1,
-                    modifier = Modifier.offset(35.dp,18.dp)
+                    modifier = Modifier
+                        .offset(35.dp, 18.dp)
                         .weight(1f)
                 )
             }
