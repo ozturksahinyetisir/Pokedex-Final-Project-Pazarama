@@ -9,18 +9,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import com.ozturksahinyetisir.pokedex.R
 import com.ozturksahinyetisir.pokedex.databinding.FragmentLoadingBinding
-import com.ozturksahinyetisir.pokedex.domain.models.PokemonDetailsModel
-import com.ozturksahinyetisir.pokedex.domain.models.RequestPaginate
 import com.ozturksahinyetisir.pokedex.presentation.viewmodels.PokedexViewModel
-import com.ozturksahinyetisir.pokedex.utils.CurrentList
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 @AndroidEntryPoint
@@ -43,24 +35,7 @@ class LoadingFragment : Fragment() {
         return binding.root
     }
 
-    private fun getAllPokemon() {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response = pokemonViewModel.getAllPokemon(RequestPaginate.offset, RequestPaginate.limit)
-                val list = ArrayList<PokemonDetailsModel>()
-                for (item in response?.results ?: ArrayList()) {
-                    pokemonViewModel.getPokemonByName(item.name)?.let { list.add(it) }
-                }
-                CurrentList.currentList.addAll(list)
-                transferTo(AllPokemonsFragment())
-            } catch (e: Exception) {
-                e.toString()
-                withContext(Dispatchers.Main){
-                    Snackbar.make(requireView(), "Something Went Wrong", Snackbar.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
+    //TODO get all pokemon here and save to Room so that we can use it offline
 
     private fun transferTo(fragment: Fragment) {
         requireActivity().supportFragmentManager.commit {

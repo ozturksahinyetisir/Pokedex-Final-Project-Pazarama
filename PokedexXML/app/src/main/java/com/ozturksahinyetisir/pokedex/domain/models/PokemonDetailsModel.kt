@@ -5,10 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PokemonDetailsModel(
-    val base_experience: Int,
     val height: Int,
     val id: Int,
-    val is_default: Boolean,
     val name: String,
     val order: Int,
     val species: Species,

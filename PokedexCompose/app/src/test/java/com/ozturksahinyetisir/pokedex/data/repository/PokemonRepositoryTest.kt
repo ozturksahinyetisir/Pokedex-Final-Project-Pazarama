@@ -5,7 +5,6 @@ import com.ozturksahinyetisir.pokedex.data.remote.responses.PokemonList
 import com.ozturksahinyetisir.pokedex.data.remote.responses.Species
 import com.ozturksahinyetisir.pokedex.data.remote.responses.Sprites
 import com.ozturksahinyetisir.pokedex.network.PokemonRepository
-import com.ozturksahinyetisir.pokedex.presentation.InfoScreen.PokemonInfoViewModel
 import com.ozturksahinyetisir.pokedex.utils.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -26,9 +25,8 @@ class PokemonRepositoryTest {
     @get:Rule
     val mockitoRule: MockitoRule = MockitoJUnit.rule()
 
-
     private lateinit var repository: PokemonRepository
-    private lateinit var viewModel: PokemonInfoViewModel
+
     @Before
     fun setUp() {
         repository = Mockito.mock(PokemonRepository::class.java)

@@ -30,7 +30,7 @@ class AllPokemonsFragment : Fragment() , AllPokemonsAdapter.OnPokemonSelected {
     private lateinit var binding: FragmentAllPokemonsBinding
     private lateinit var adapter: AllPokemonsAdapter
     private lateinit var pokemonViewModel: PokedexViewModel
-    private lateinit var shimmer: ShimmerFrameLayout
+    lateinit var shimmer: ShimmerFrameLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +71,6 @@ class AllPokemonsFragment : Fragment() , AllPokemonsAdapter.OnPokemonSelected {
         }
 
         binding.pokemonList.adapter = adapter
-
 
         binding.refresh.setOnRefreshListener {
             currentList.clear()
