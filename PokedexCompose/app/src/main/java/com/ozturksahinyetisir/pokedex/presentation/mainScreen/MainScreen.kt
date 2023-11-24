@@ -227,10 +227,7 @@ fun PokedexEntry(
     modifier: Modifier = Modifier,
     pViewModel: PokemonMainViewModel
 ) {
-    val defaultDominantColor = MaterialTheme.colorScheme.surface
-    var dominantColor by remember {
-        mutableStateOf(defaultDominantColor)
-    }
+
     Box(
         contentAlignment = Center,
         modifier = modifier
@@ -240,7 +237,7 @@ fun PokedexEntry(
             .background(Color.White)
             .clickable {
                 navController.navigate(
-                    "info_screen/${dominantColor.toArgb()}/${pModel.pokemonName}"
+                    "info_screen/${pModel.pokemonName}"
                 )
             }
     ) {

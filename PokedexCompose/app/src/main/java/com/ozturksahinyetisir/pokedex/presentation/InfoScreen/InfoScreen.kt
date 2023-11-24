@@ -23,7 +23,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -41,7 +40,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -58,13 +56,11 @@ import com.ozturksahinyetisir.pokedex.utils.Resource
 import com.ozturksahinyetisir.pokedex.utils.parseStatToAbbr
 import com.ozturksahinyetisir.pokedex.utils.parseStatToColor
 import com.ozturksahinyetisir.pokedex.utils.parseTypeToColor
-import kotlinx.coroutines.withContext
 import java.lang.Math.round
 import java.util.Locale
 
 @Composable
 fun InfoScreen(
-    dominantColor:Color,
     pokemonName: String,
     navController: NavController,
     viewModel: PokemonInfoViewModel,
@@ -76,14 +72,14 @@ fun InfoScreen(
 
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(dominantColor)
+        .background(Color.White)
     ) {
         PokemonDetailTopSection(
             navController = navController,
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.2f)
-                .align(Alignment.TopCenter)
+                .align(Alignment.TopCenter),
         )
         PokemonDetailStateWrapper(
             pokemonInfo = pokemonInfo,
@@ -125,6 +121,7 @@ fun InfoScreen(
                     )
                 }
             }
+
         }
     }
 }
@@ -148,6 +145,7 @@ fun PokemonDetailTopSection(
         )
     }
 }
+
 @Composable
 fun PokemonDetailStateWrapper(
     pokemonInfo: Resource<Pokemon>,
