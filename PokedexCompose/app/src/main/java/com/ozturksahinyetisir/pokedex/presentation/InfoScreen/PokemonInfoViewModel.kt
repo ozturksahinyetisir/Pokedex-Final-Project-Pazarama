@@ -16,7 +16,4 @@ class PokemonInfoViewModel @Inject constructor(
         return pRepository.getPokemonInfo(pokemonName)
     }
 
-
-
-
 }

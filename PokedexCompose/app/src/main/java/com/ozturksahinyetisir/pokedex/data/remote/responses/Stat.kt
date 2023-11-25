@@ -9,5 +9,5 @@ data class Stat(
     @SerializedName("effort")
     val effort: Int,
     @SerializedName("stat")
-    val stat: com.ozturksahinyetisir.pokedex.data.remote.responses.StatX
+    val stat: StatX
 )

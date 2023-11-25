@@ -7,5 +7,5 @@ data class Type(
     @SerializedName("slot")
     val slot: Int,
     @SerializedName("type")
-    val type: com.ozturksahinyetisir.pokedex.data.remote.responses.TypeX
+    val type: TypeX
 )
